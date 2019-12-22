@@ -21,6 +21,10 @@ export class ShoppingListComponent implements OnInit {
     );
   }
 
+  onEditItem(index: number) {
+      this.shoppingListService.startedEditing.next(index);
+  }
+
   // onIngredientAdded(ingredientAdded: Ingredient) {
   //   console.log('ShoppingListComponent -> onIngredientAdded()');
   //   console.log(JSON.stringify(ingredientAdded));
