@@ -8,8 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular-undemy';
   loadedFeauture = 'recipe';
-
-  onNavigate(feauture: string) {
-    this.loadedFeauture = feauture;
-  }
 }
