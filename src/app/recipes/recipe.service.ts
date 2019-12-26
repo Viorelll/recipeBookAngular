@@ -10,20 +10,24 @@ export class RecipeService {
    // recipeSelected = new EventEmitter<Recipe>();
     recipeChanged = new Subject<Recipe[]>();
 
-    private recipes: Recipe[] = [
-        new Recipe("Pizza", "How to make a traditional pizza", "https://cdn.pixabay.com/photo/2014/07/08/12/34/pizza-386717__340.jpg", [new Ingredient('Mozzarela', 2), new Ingredient('Salam', 200)]),
-        new Recipe("Pizza2", "How to make a traditional pizza2", "https://cdn.pixabay.com/photo/2014/07/08/12/34/pizza-386717__340.jpg",  [new Ingredient('Mozzarela', 2), new Ingredient('Salam', 200)]),
-        new Recipe("Pizza3", "How to make a traditional pizza3", "https://cdn.pixabay.com/photo/2014/07/08/12/34/pizza-386717__340.jpg",  [new Ingredient('Mozzarela', 2), new Ingredient('Salam', 200)])
-      ];
+    // private recipes: Recipe[] = [
+    //     new Recipe("Pizza", "How to make a traditional pizza", "https://cdn.pixabay.com/photo/2014/07/08/12/34/pizza-386717__340.jpg", [new Ingredient('Mozzarela', 2), new Ingredient('Salam', 200)]),
+    //     new Recipe("Pizza2", "How to make a traditional pizza2", "https://cdn.pixabay.com/photo/2014/07/08/12/34/pizza-386717__340.jpg",  [new Ingredient('Mozzarela', 2), new Ingredient('Salam', 200)]),
+    //     new Recipe("Pizza3", "How to make a traditional pizza3", "https://cdn.pixabay.com/photo/2014/07/08/12/34/pizza-386717__340.jpg",  [new Ingredient('Mozzarela', 2), new Ingredient('Salam', 200)])
+    //   ];
 
+    private recipes: Recipe[] = [];
 
-    constructor(private shoppingService: ShoppingListService) {   
+    constructor(private shoppingService: ShoppingListService) { }
+
+      setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.recipeChanged.next(this.recipes.slice());
+      }
+
+    getRecipe(index: number): Recipe {
+      return this.recipes[index];
     }
-
-    
-  getRecipe(index: number): Recipe {
-    return this.recipes[index];
-  }
 
     getRecipes() {
        return this.recipes.slice();
